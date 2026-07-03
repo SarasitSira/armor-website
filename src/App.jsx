@@ -67,8 +67,8 @@ export default function App() {
               <a href="#industries" className="text-slate-300 hover:text-white transition-colors">Industries</a>
               <a href="#product" className="text-slate-300 hover:text-white transition-colors">The Bexo Suit</a>
               <a href="#about" className="text-slate-300 hover:text-white transition-colors">Our Team</a>
-              <a href="mailto:sarasit.sira@armor-exo.com?subject=Request a Pilot Program" className="bg-orange-600 hover:bg-orange-500 text-white px-6 py-2.5 rounded-lg font-medium transition-all shadow-lg shadow-orange-500/30">
-                Request Pilot
+              <a href="mailto:sarasit.sira@armor-exo.com?subject=Request a Demo" className="bg-orange-600 hover:bg-orange-500 text-white px-6 py-2.5 rounded-lg font-medium transition-all shadow-lg shadow-orange-500/30">
+                Request Demo
               </a>
             </div>
 
@@ -91,8 +91,8 @@ export default function App() {
               <a href="#industries" className="block px-3 py-2 text-slate-300 hover:text-white font-medium">Industries</a>
               <a href="#product" className="block px-3 py-2 text-slate-300 hover:text-white font-medium">The Bexo Suit</a>
               <a href="#about" className="block px-3 py-2 text-slate-300 hover:text-white font-medium">Our Team</a>
-              <a href="mailto:sarasit.sira@armor-exo.com?subject=Request a Pilot Program" className="w-full text-left bg-orange-600 text-white px-3 py-2 rounded-md font-medium mt-4 hover:bg-orange-500 transition-colors">
-                Request Pilot
+              <a href="mailto:sarasit.sira@armor-exo.com?subject=Request a Demo" className="w-full text-left bg-orange-600 text-white px-3 py-2 rounded-md font-medium mt-4 hover:bg-orange-500 transition-colors">
+                Request Demo
               </a>
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function App() {
             ARMOR develops lightweight, wearable back exosuits that reduce lower back muscle activation by 40-50% per lift cycle on average - protecting workers, slashing injury liability costs, and improve productivity.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="mailto:sarasit.sira@armor-exo.com"  className="bg-orange-600 hover:bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all shadow-lg shadow-orange-500/25 flex items-center justify-center gap-2">
+            <a href="#product"  className="bg-orange-600 hover:bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all shadow-lg shadow-orange-500/25 flex items-center justify-center gap-2">
               Discover Bexo <ArrowRight className="h-5 w-5" />
             </a>
             {/* <button className="bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 px-8 py-4 rounded-lg text-lg font-semibold transition-all flex items-center justify-center">
@@ -271,8 +271,8 @@ export default function App() {
             Bring injury prevention within reach. Contact our deployment team to discuss bringing Bexo to your facility.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="mailto:sarasit.sira@armor-exo.com?subject=Request a Pilot Program" className="bg-orange-600 hover:bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all shadow-lg shadow-orange-500/25">
-              Request a Pilot Program
+            <a href="mailto:sarasit.sira@armor-exo.com?subject=Request a Demo" className="bg-orange-600 hover:bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all shadow-lg shadow-orange-500/25">
+              Request a Demo
             </a>
             {/* <button className="bg-transparent hover:bg-slate-800 text-white border border-slate-600 px-8 py-4 rounded-lg text-lg font-semibold transition-all">
               Speak to an Ergonomist
