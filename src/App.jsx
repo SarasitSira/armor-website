@@ -52,7 +52,7 @@ export default function App() {
       <nav className="fixed w-full bg-slate-900/95 backdrop-blur-md z-50 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
-            <div className="flex items-center gap-3">
+            <div href="#" className="flex items-center gap-3">
               <ArmorLogo className="h-10 w-10" />
               <span 
                 className="text-2xl font-extrabold text-white tracking-widest"
