@@ -1,6 +1,5 @@
 import CtaSection from '../components/CtaSection';
 import Reveal from '../components/Reveal';
-import usePageTitle from '../hooks/usePageTitle';
 import { usePageSources } from '../sources';
 
 const STATS = [
@@ -99,7 +98,6 @@ const SOURCES = [
 const Ref = ({ n }) => <sup className="ml-0.5 text-[0.65em] text-graphite">{n}</sup>;
 
 export default function Industries() {
-  usePageTitle('Industries');
   usePageSources(SOURCES);
 
   return (

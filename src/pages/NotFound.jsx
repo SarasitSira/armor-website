@@ -1,8 +1,6 @@
 import { ArrowLink } from '../components/Links';
-import usePageTitle from '../hooks/usePageTitle';
 
 export default function NotFound() {
-  usePageTitle('Page not found');
 
   return (
     <section className="px-5 pb-40 pt-32 text-center md:pt-44">

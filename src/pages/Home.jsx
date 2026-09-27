@@ -5,7 +5,6 @@ import epicLogo from '../assets/partners/gt-epic-lab.png';
 import CtaSection from '../components/CtaSection';
 import Reveal from '../components/Reveal';
 import { ArrowLink, DemoButton } from '../components/Links';
-import usePageTitle from '../hooks/usePageTitle';
 import { SHIELD_HREF } from '../site';
 
 const PARTNERS = [
@@ -22,7 +21,6 @@ const STATS = [
 ];
 
 export default function Home() {
-  usePageTitle();
 
   return (
     <>

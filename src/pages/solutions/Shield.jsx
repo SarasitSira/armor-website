@@ -3,7 +3,6 @@ import shieldScores from '../../assets/shield-scores.webp';
 import CtaSection from '../../components/CtaSection';
 import Reveal from '../../components/Reveal';
 import { PreviewButton } from '../../components/Links';
-import usePageTitle from '../../hooks/usePageTitle';
 import { SHIELD_HREF } from '../../site';
 
 const FEATURES = [
@@ -22,7 +21,6 @@ const FEATURES = [
 ];
 
 export default function Shield() {
-  usePageTitle('Shield');
 
   return (
     <>

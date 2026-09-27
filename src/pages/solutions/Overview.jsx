@@ -4,11 +4,9 @@ import shieldDashboard from '../../assets/shield-dashboard.webp';
 import CtaSection from '../../components/CtaSection';
 import Reveal from '../../components/Reveal';
 import { ArrowLink } from '../../components/Links';
-import usePageTitle from '../../hooks/usePageTitle';
 import { SHIELD_HREF } from '../../site';
 
 export default function Overview() {
-  usePageTitle('Solutions');
 
   return (
     <>

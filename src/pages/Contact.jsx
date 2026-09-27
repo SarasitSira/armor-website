@@ -1,6 +1,5 @@
 import Reveal from '../components/Reveal';
 import { CONTACT_HREF, DEMO_HREF, INSTAGRAM_HREF, LINKEDIN_HREF, MAILING_LIST_HREF } from '../site';
-import usePageTitle from '../hooks/usePageTitle';
 
 const OPTIONS = [
   {
@@ -29,7 +28,6 @@ const OPTIONS = [
 ];
 
 export default function Contact() {
-  usePageTitle('Contact');
 
   return (
     <section className="px-5 pb-28 pt-28 md:pb-40 md:pt-32">

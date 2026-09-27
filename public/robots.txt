@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://armor-exo.com/sitemap.xml

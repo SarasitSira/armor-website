@@ -2,7 +2,6 @@ import hybridRender from '../../assets/bexo-hybrid-render.webp';
 import passiveRender from '../../assets/bexo-passive-render.webp';
 import CtaSection from '../../components/CtaSection';
 import Reveal from '../../components/Reveal';
-import usePageTitle from '../../hooks/usePageTitle';
 import { usePageSources } from '../../sources';
 
 const CONFIGURATIONS = [
@@ -61,7 +60,6 @@ const SOURCES = [
 const Ref = ({ n }) => <sup className="ml-0.5 text-[0.65em] text-white/60">{n}</sup>;
 
 export default function Bexo() {
-  usePageTitle('Bexo');
   usePageSources(SOURCES);
 
   return (
