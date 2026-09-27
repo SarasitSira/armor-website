@@ -1,8 +1,9 @@
 import shieldDashboard from '../../assets/shield-dashboard.webp';
+import shieldDataStream from '../../assets/shield-datastream.webp';
 import shieldScores from '../../assets/shield-scores.webp';
 import CtaSection from '../../components/CtaSection';
 import Reveal from '../../components/Reveal';
-import { Eyebrow } from '../../components/ui';
+import { Eyebrow, Heading } from '../../components/ui';
 import { PreviewButton } from '../../components/Links';
 import { SHIELD_HREF } from '../../site';
 
@@ -48,7 +49,7 @@ export default function Shield() {
           >
             <img
               src={shieldDashboard}
-              alt="Shield Ergonomics Studio dashboard showing a 3D body model and ergonomic assessment scores"
+              alt="Shield Ergonomics Studio in light mode: a 3D skeleton mid stooped lift beside NIOSH, REBA, and RULA posture scores"
               className="w-full rounded-[14px] md:rounded-[20px]"
             />
           </a>
@@ -61,7 +62,7 @@ export default function Shield() {
             <div className="mx-auto max-w-sm overflow-hidden rounded-4xl bg-white p-4 ring-1 ring-black/5">
               <img
                 src={shieldScores}
-                alt="NIOSH, REBA, and RULA score cards from Shield"
+                alt="Shield posture scores during a stooped lift: NIOSH 2 of 10, REBA 3 of 15, RULA 4 of 7"
                 className="w-full rounded-2xl"
                 loading="lazy"
               />
@@ -76,6 +77,28 @@ export default function Shield() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Data stream view */}
+      <section className="px-5 pt-24 md:pt-32">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <Eyebrow>Data stream</Eyebrow>
+          <Heading title="Every sensor, live." muted="Every axis, recorded." size="section" className="mt-4" />
+          <p className="mx-auto mt-5 max-w-xl text-[17px] leading-relaxed text-graphite">
+            Node status, battery, and orientation for each sensor, with multi-axis waveform history
+            you can export to CSV.
+          </p>
+        </Reveal>
+        <Reveal delay={120} className="mx-auto mt-14 max-w-6xl">
+          <div className="overflow-hidden rounded-[20px] bg-white p-1.5 shadow-2xl shadow-black/10 ring-1 ring-black/10 md:rounded-[28px] md:p-2.5">
+            <img
+              src={shieldDataStream}
+              alt="Shield data stream tab showing eight active sensor nodes and a live spine pitch curve during a lift"
+              className="w-full rounded-[14px] md:rounded-[20px]"
+              loading="lazy"
+            />
+          </div>
+        </Reveal>
       </section>
 
       <CtaSection />
