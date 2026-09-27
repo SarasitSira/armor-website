@@ -5,6 +5,8 @@ export const LINKEDIN_HREF = 'https://www.linkedin.com/company/armor-exo';
 export const SHIELD_HREF = 'https://shield.armor-exo.com';
 export const INSTAGRAM_HREF = 'https://www.instagram.com/armor.exo/';
 export const MAILING_LIST_HREF = 'https://mailinglist.armor-exo.com/subscription/form';
+// listmonk public form: posting an email with this list UUID subscribes it to the "Newsletter" list
+export const NEWSLETTER_LIST_ID = '4bda8482-acc1-4f41-bcb3-7f71cb08a128';
 
 export const NAV_LINKS = [
   { to: '/industries', label: 'Industries' },

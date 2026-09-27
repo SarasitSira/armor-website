@@ -40,7 +40,7 @@ export default function App() {
   return (
     <SourcesContext.Provider value={sourcesValue}>
       <ScrollToTop />
-      <div className="flex min-h-screen flex-col bg-white text-black antialiased">
+      <div className="flex min-h-screen flex-col bg-canvas text-black antialiased">
         <Nav />
         <main className="flex-1">
           <Routes>

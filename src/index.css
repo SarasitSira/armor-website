@@ -4,12 +4,15 @@
   /* Brand palette: #eb7900, #5a5a5a, #ffffff, #000000 */
   --color-brand: #eb7900;
   --color-graphite: #5a5a5a;
+  /* Page background: #5a5a5a at 5% over white */
+  --color-canvas: #f7f7f7;
 
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-wordmark: "Orbitron", var(--font-sans);
 }
 
 html {
+  background: var(--color-canvas);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

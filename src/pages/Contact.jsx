@@ -32,10 +32,10 @@ export default function Contact() {
   return (
     <section className="px-5 pb-28 pt-28 md:pb-40 md:pt-32">
       <Reveal className="mx-auto max-w-3xl text-center">
-        <h1 className="text-5xl font-semibold leading-[1.05] tracking-[-0.035em] md:text-7xl">
+        <h1 className="text-4xl font-medium leading-[1.04] tracking-[-0.035em] sm:text-5xl md:text-6xl">
           Ready to upgrade your workforce?
         </h1>
-        <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-graphite md:text-xl">
+        <p className="mx-auto mt-8 max-w-xl text-[17px] leading-relaxed text-graphite md:text-lg">
           Bring injury prevention within reach. Contact our deployment team to discuss bringing
           Bexo to your facility.
         </p>
@@ -44,8 +44,8 @@ export default function Contact() {
       <div className="mx-auto mt-16 grid max-w-4xl gap-5 md:mt-20 md:grid-cols-2">
         {OPTIONS.map((option, i) => (
           <Reveal key={option.title} delay={(i % 2) * 100} className="h-full">
-            <div className="flex h-full flex-col rounded-3xl bg-graphite/5 p-8 md:p-9">
-              <h2 className="text-2xl font-semibold tracking-tight">{option.title}</h2>
+            <div className="flex h-full flex-col rounded-4xl bg-white p-8 md:p-9">
+              <h2 className="text-2xl font-medium tracking-[-0.02em]">{option.title}</h2>
               <p className="mt-3 flex-1 text-[15px] leading-relaxed text-graphite">{option.body}</p>
               <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2">
                 {option.links.map((link) => (

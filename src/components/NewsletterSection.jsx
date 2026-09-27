@@ -1,37 +1,52 @@
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 import Reveal from './Reveal';
-import { MAILING_LIST_HREF } from '../site';
+import { Eyebrow, Heading } from './ui';
+import { MAILING_LIST_HREF, NEWSLETTER_LIST_ID } from '../site';
 
-// Newsletter call to action shown above the footer on every page
+// Full-width newsletter panel shown above the footer on every page.
+// Submits straight to the listmonk subscription form, which opens its confirmation page in a new tab.
 export default function NewsletterSection() {
   return (
-    <section className="px-5 pb-16 md:pb-20">
-      <Reveal className="mx-auto max-w-7xl">
-        <div className="grid items-center gap-10 rounded-3xl bg-brand px-8 py-14 text-black md:grid-cols-[1.3fr_1fr] md:gap-16 md:px-16 md:py-20">
-          <div>
-            <p className="text-lg font-semibold">Newsletter</p>
-            <h2 className="mt-2 text-4xl font-semibold leading-[1.05] tracking-[-0.03em] md:text-6xl">
-              Follow the build.
-            </h2>
-            <p className="mt-5 max-w-lg text-lg leading-relaxed md:text-xl">
-              Research results, product updates, and company milestones from the ARMOR team,
-              delivered to your inbox.
-            </p>
-          </div>
-          <div className="flex flex-col items-start gap-4 md:items-end">
-            <a
-              href={MAILING_LIST_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full bg-black px-8 py-4 text-lg font-medium text-white transition-colors hover:bg-graphite"
-            >
-              Subscribe to our newsletter
-              <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" strokeWidth={2} />
-            </a>
-            <p className="text-sm">Free. Unsubscribe anytime.</p>
-          </div>
+    <section className="bg-black px-5 py-24 text-white md:px-8 md:py-32">
+      <Reveal className="flex flex-col gap-12 md:flex-row md:items-end md:justify-between">
+        <div className="max-w-2xl">
+          <Eyebrow>Newsletter</Eyebrow>
+          <Heading title="Follow the build." muted="Updates from ARMOR." size="section" dark className="mt-4" />
+          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/65">
+            Research results, product updates, and company milestones, delivered to your inbox.
+          </p>
         </div>
+
+        <form
+          action={MAILING_LIST_HREF}
+          method="post"
+          target="_blank"
+          className="w-full md:max-w-md"
+        >
+          <input type="hidden" name="l" value={NEWSLETTER_LIST_ID} />
+          <input type="hidden" name="nonce" value="" />
+          <label htmlFor="newsletter-email" className="sr-only">Email address</label>
+          <div className="flex items-center border-b border-white/40 pb-3 focus-within:border-white">
+            <input
+              id="newsletter-email"
+              type="email"
+              name="email"
+              required
+              placeholder="Enter your email"
+              autoComplete="email"
+              className="min-w-0 flex-1 bg-transparent text-base text-white placeholder:text-white/50 focus:outline-none"
+            />
+            <button
+              type="submit"
+              className="group ml-4 inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-white hover:text-brand"
+            >
+              Subscribe
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" strokeWidth={2} />
+            </button>
+          </div>
+          <p className="mt-4 text-xs text-white/50">Free. Unsubscribe anytime.</p>
+        </form>
       </Reveal>
     </section>
   );

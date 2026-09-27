@@ -2,6 +2,7 @@ import shieldDashboard from '../../assets/shield-dashboard.webp';
 import shieldScores from '../../assets/shield-scores.webp';
 import CtaSection from '../../components/CtaSection';
 import Reveal from '../../components/Reveal';
+import { Eyebrow } from '../../components/ui';
 import { PreviewButton } from '../../components/Links';
 import { SHIELD_HREF } from '../../site';
 
@@ -26,9 +27,9 @@ export default function Shield() {
     <>
       <header className="px-5 pt-28 md:pt-32">
         <Reveal className="mx-auto max-w-4xl text-center">
-          <p className="mb-3 text-lg font-semibold text-brand">Shield</p>
-          <h1 className="text-6xl font-semibold tracking-[-0.035em] md:text-8xl">See every lift.</h1>
-          <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-graphite md:text-xl">
+          <Eyebrow className="mb-4">Shield</Eyebrow>
+          <h1 className="text-5xl font-medium tracking-[-0.035em] md:text-7xl">See every lift.</h1>
+          <p className="mx-auto mt-8 max-w-2xl text-[17px] leading-relaxed text-graphite md:text-lg">
             Shield Ergonomics Studio turns wearable IMU sensors into a live 3D body model, with
             NIOSH, REBA, and RULA posture scoring and real-time telemetry.
           </p>
@@ -57,7 +58,7 @@ export default function Shield() {
       <section className="px-5 pt-20 md:pt-28">
         <div className="mx-auto grid max-w-5xl items-center gap-12 md:grid-cols-2 md:gap-16">
           <Reveal className="order-2 md:order-1">
-            <div className="mx-auto max-w-sm overflow-hidden rounded-3xl bg-graphite/5 p-4 ring-1 ring-black/5">
+            <div className="mx-auto max-w-sm overflow-hidden rounded-4xl bg-white p-4 ring-1 ring-black/5">
               <img
                 src={shieldScores}
                 alt="NIOSH, REBA, and RULA score cards from Shield"
@@ -69,7 +70,7 @@ export default function Shield() {
           <div className="order-1 space-y-10 md:order-2">
             {FEATURES.map((feature, i) => (
               <Reveal key={feature.title} delay={i * 100}>
-                <h2 className="text-2xl font-semibold tracking-tight">{feature.title}</h2>
+                <h2 className="text-2xl font-medium tracking-[-0.02em]">{feature.title}</h2>
                 <p className="mt-2 text-[17px] leading-relaxed text-graphite">{feature.body}</p>
               </Reveal>
             ))}

@@ -1,14 +1,13 @@
 import Reveal from './Reveal';
 import { ArrowLink, DemoButton } from './Links';
+import { Heading } from './ui';
 
 export default function CtaSection() {
   return (
-    <section className="px-5 py-28 md:py-40">
+    <section className="px-5 py-28 md:px-8 md:py-40">
       <Reveal className="mx-auto max-w-3xl text-center">
-        <h2 className="text-4xl font-semibold leading-[1.08] tracking-[-0.03em] md:text-6xl">
-          Ready to upgrade your workforce?
-        </h2>
-        <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-graphite md:text-xl">
+        <Heading title="Ready to upgrade your workforce?" size="section" />
+        <p className="mx-auto mt-6 max-w-xl text-[17px] leading-relaxed text-graphite">
           Bring injury prevention within reach. Contact our deployment team to discuss bringing
           Bexo to your facility.
         </p>

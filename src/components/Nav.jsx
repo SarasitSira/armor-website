@@ -6,9 +6,9 @@ import { ArmorLogo, Wordmark } from './Brand';
 import { DEMO_HREF, NAV_LINKS } from '../site';
 
 const desktopLinkClass = (isCompact, isActive) =>
-  `transition-all duration-300 hover:text-black ${isCompact ? 'text-xs' : 'text-sm'} ${
-    isActive ? 'text-black' : 'text-graphite'
-  }`;
+  `font-medium uppercase tracking-[0.14em] transition-all duration-300 hover:text-black ${
+    isCompact ? 'text-[11px]' : 'text-xs'
+  } ${isActive ? 'text-black' : 'text-graphite'}`;
 
 export default function Nav() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -59,24 +59,24 @@ export default function Nav() {
         }}
         className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
           activeMenu
-            ? 'border-transparent bg-white'
+            ? 'border-transparent bg-canvas'
             : isSolid
-              ? 'border-black/6 bg-white/75 backdrop-blur-xl backdrop-saturate-150'
-              : 'border-transparent bg-white'
+              ? 'border-black/6 bg-canvas/80 backdrop-blur-xl backdrop-saturate-150'
+              : 'border-transparent bg-transparent'
         }`}
       >
         <div
-          className={`relative z-10 mx-auto flex max-w-5xl items-center justify-between px-5 transition-[height] duration-300 ease-out ${
+          className={`relative z-10 grid grid-cols-[1fr_auto] items-center px-5 transition-[height] duration-300 ease-out md:grid-cols-[1fr_auto_1fr] md:px-8 ${
             isCompact ? 'h-12' : 'h-20'
           }`}
         >
-          <Link to="/" onClick={closeMobile} className="flex items-center gap-2" aria-label="ARMOR home">
+          <Link to="/" onClick={closeMobile} className="flex items-center gap-2 justify-self-start" aria-label="ARMOR home">
             <ArmorLogo className={`transition-all duration-300 ${isCompact ? 'h-6 w-6' : 'h-9 w-9'}`} />
             <Wordmark className={`text-black transition-all duration-300 ${isCompact ? 'text-[15px]' : 'text-xl'}`} />
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden items-center gap-8 self-stretch md:flex">
+          {/* Desktop Menu: links centered in the bar */}
+          <div className="hidden items-center gap-10 self-stretch md:flex">
             {NAV_LINKS.map((link) =>
               link.children ? (
                 <div
@@ -114,23 +114,24 @@ export default function Nav() {
                 </NavLink>
               )
             )}
-            <a
-              href={DEMO_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              onFocus={closeNow}
-              className={`rounded-full bg-black font-medium text-white transition-all duration-300 hover:bg-graphite ${
-                isCompact ? 'px-3.5 py-1 text-xs' : 'px-5 py-2 text-sm'
-              }`}
-            >
-              Request a demo
-            </a>
           </div>
+
+          <a
+            href={DEMO_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            onFocus={closeNow}
+            className={`hidden justify-self-end rounded-full bg-black font-medium uppercase tracking-[0.14em] text-white transition-all duration-300 hover:bg-graphite md:inline-block ${
+              isCompact ? 'px-3.5 py-1.5 text-[10px]' : 'px-4 py-2 text-[11px]'
+            }`}
+          >
+            Request a demo
+          </a>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-graphite hover:text-black md:hidden"
+            className="justify-self-end text-graphite hover:text-black md:hidden"
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
             {isMobileMenuOpen ? <X className="h-6 w-6" strokeWidth={1.5} /> : <Menu className="h-6 w-6" strokeWidth={1.5} />}
@@ -144,17 +145,17 @@ export default function Nav() {
           onMouseLeave={scheduleClose}
         >
           <div
-            className={`border-b border-black/6 bg-white shadow-[0_24px_40px_-24px_rgba(0,0,0,0.12)] transition-all duration-300 ease-out ${
+            className={`border-b border-black/6 bg-canvas shadow-[0_24px_40px_-24px_rgba(0,0,0,0.12)] transition-all duration-300 ease-out ${
               activeMenu ? 'visible opacity-100' : 'invisible opacity-0'
             }`}
           >
             {activeMenu && (
-              <div className="mx-auto max-w-5xl px-5 pb-12 pt-6">
-                <p className="mb-4 text-sm font-medium text-graphite">Explore {activeMenu.label}</p>
+              <div className="px-5 pb-12 pt-6 md:px-8">
+                <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.18em] text-graphite">Explore {activeMenu.label}</p>
                 <div className="flex flex-col items-start gap-5">
                   {activeMenu.children.map((child) => (
                     <Link key={child.to} to={child.to} onClick={closeNow} className="group block">
-                      <span className="block text-3xl font-semibold tracking-tight text-black transition-colors group-hover:text-brand">
+                      <span className="block text-3xl font-medium tracking-[-0.03em] text-black transition-colors group-hover:text-brand">
                         {child.label}
                       </span>
                       <span className="mt-1 block text-sm text-graphite">{child.description}</span>
@@ -176,7 +177,7 @@ export default function Nav() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="border-t border-black/6 bg-white/95 backdrop-blur-xl md:hidden">
+          <div className="border-t border-black/6 bg-canvas/95 backdrop-blur-xl md:hidden">
             <div className="flex flex-col px-5 py-4">
               {NAV_LINKS.map((link) => (
                 <div key={link.to} className="border-b border-black/6 py-3">
@@ -184,7 +185,7 @@ export default function Nav() {
                     to={link.to}
                     end={Boolean(link.children)}
                     onClick={closeMobile}
-                    className={({ isActive }) => `block text-lg font-semibold tracking-tight ${isActive ? 'text-brand' : ''}`}
+                    className={({ isActive }) => `block text-lg font-medium tracking-[-0.02em] ${isActive ? 'text-brand' : ''}`}
                   >
                     {link.label}
                   </NavLink>
@@ -204,7 +205,7 @@ export default function Nav() {
                   )}
                 </div>
               ))}
-              <a href={DEMO_HREF} target="_blank" rel="noopener noreferrer" className="mt-5 rounded-full bg-brand py-3 text-center font-medium text-white">
+              <a href={DEMO_HREF} target="_blank" rel="noopener noreferrer" className="mt-5 rounded-full bg-black py-3 text-center text-sm font-medium uppercase tracking-[0.14em] text-white">
                 Request a demo
               </a>
             </div>
@@ -216,7 +217,7 @@ export default function Nav() {
           backdrop-filter would otherwise stop this layer from blurring the page behind it. */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none fixed inset-0 z-40 hidden bg-white/30 backdrop-blur-sm transition-opacity duration-300 md:block ${
+        className={`pointer-events-none fixed inset-0 z-40 hidden bg-canvas/30 backdrop-blur-sm transition-opacity duration-300 md:block ${
           activeMenu ? 'opacity-100' : 'opacity-0'
         }`}
       />

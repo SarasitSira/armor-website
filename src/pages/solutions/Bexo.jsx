@@ -2,6 +2,7 @@ import hybridRender from '../../assets/bexo-hybrid-render.webp';
 import passiveRender from '../../assets/bexo-passive-render.webp';
 import CtaSection from '../../components/CtaSection';
 import Reveal from '../../components/Reveal';
+import { Eyebrow } from '../../components/ui';
 import { usePageSources } from '../../sources';
 
 const CONFIGURATIONS = [
@@ -66,12 +67,12 @@ export default function Bexo() {
     <>
       <header className="px-5 pt-28 md:pt-32">
         <Reveal className="mx-auto max-w-4xl text-center">
-          <p className="mb-3 text-lg font-semibold text-brand">Bexo</p>
-          <h1 className="text-6xl font-semibold tracking-[-0.035em] md:text-8xl">Meet Bexo.</h1>
-          <p className="mt-4 text-2xl font-semibold tracking-tight text-graphite md:text-4xl">
+          <Eyebrow className="mb-4">Bexo</Eyebrow>
+          <h1 className="text-5xl font-medium tracking-[-0.035em] md:text-7xl">Meet Bexo.</h1>
+          <p className="mt-4 text-2xl font-medium tracking-[-0.02em] text-graphite md:text-4xl">
             Safety engineered into every movement.
           </p>
-          <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-graphite md:text-xl">
+          <p className="mx-auto mt-8 max-w-2xl text-[17px] leading-relaxed text-graphite md:text-lg">
             Bexo is the third generation of cable-driven back exosuits developed with Georgia Tech’s
             EPIC Lab, backed by a team with 25+ years of exoskeleton research. One modular suit,
             passive or hybrid.
@@ -81,13 +82,13 @@ export default function Bexo() {
         <div className="mx-auto mt-16 grid max-w-5xl gap-5 md:mt-20 md:grid-cols-2">
           {CONFIGURATIONS.map((config, i) => (
             <Reveal key={config.name} delay={i * 120} className="h-full">
-              <article className="flex h-full flex-col items-center rounded-3xl bg-graphite/5 px-8 pb-10 pt-12 text-center">
+              <article className="flex h-full flex-col items-center rounded-4xl bg-white px-8 pb-10 pt-12 text-center">
                 <img
                   src={config.image}
                   alt={`${config.name} render, rear view on a mannequin`}
                   className="h-105 w-auto object-contain md:h-130"
                 />
-                <h2 className="mt-8 text-2xl font-semibold tracking-tight">{config.name}</h2>
+                <h2 className="mt-8 text-2xl font-medium tracking-[-0.02em]">{config.name}</h2>
                 <p className="mt-1 text-sm font-medium text-brand">{config.weight}</p>
                 <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-graphite">{config.body}</p>
               </article>
@@ -98,10 +99,10 @@ export default function Bexo() {
 
       {/* Combined weight */}
       <section className="px-5 pt-24 md:pt-32">
-        <Reveal className="mx-auto max-w-5xl rounded-3xl bg-graphite/5 px-8 py-16 text-center md:py-20">
-          <p className="text-lg font-semibold text-brand">The complete hybrid suit</p>
-          <div className="mt-3 text-8xl font-semibold tracking-[-0.05em] md:text-[160px] md:leading-none">2.25 kg</div>
-          <p className="mx-auto mt-6 max-w-lg text-lg leading-relaxed text-graphite md:text-xl">
+        <Reveal className="mx-auto max-w-5xl rounded-4xl bg-white px-8 py-16 text-center md:py-20">
+          <Eyebrow>The complete hybrid suit</Eyebrow>
+          <div className="mt-3 text-8xl font-medium tracking-[-0.05em] md:text-[160px] md:leading-none">2.25 kg</div>
+          <p className="mx-auto mt-6 max-w-lg text-[17px] leading-relaxed text-graphite md:text-lg">
             Everything you need for powered back support, light enough to wear through a full shift.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 text-left">
@@ -109,7 +110,7 @@ export default function Bexo() {
               <div key={part.label} className="flex items-center gap-6">
                 {i > 0 && <span className="text-3xl font-light text-graphite">+</span>}
                 <div>
-                  <div className="text-3xl font-semibold tracking-tight">{part.value}</div>
+                  <div className="text-3xl font-medium tracking-[-0.02em]">{part.value}</div>
                   <div className="text-sm text-graphite">{part.label}</div>
                 </div>
               </div>
@@ -122,7 +123,7 @@ export default function Bexo() {
       <section className="px-5 py-24 md:py-32">
         <div className="mx-auto max-w-5xl">
           <Reveal className="max-w-2xl">
-            <h2 className="text-4xl font-semibold tracking-[-0.03em] md:text-5xl">Help that adapts to every lift.</h2>
+            <h2 className="text-3xl font-medium tracking-[-0.035em] md:text-5xl">Help that adapts to every lift.</h2>
             <p className="mt-5 text-lg leading-relaxed text-graphite">
               Fixed-profile suits give the same help for a light reach and a heavy transfer. Bexo scales
               its assistance to what your body is doing.
@@ -132,7 +133,7 @@ export default function Bexo() {
             {STEPS.map((step, i) => (
               <Reveal key={step.title} delay={i * 100} className="border-t border-black/10 pt-6">
                 <span className="text-sm font-medium tabular-nums text-brand">0{i + 1}</span>
-                <h3 className="mt-3 text-2xl font-semibold tracking-tight">{step.title}</h3>
+                <h3 className="mt-3 text-2xl font-medium tracking-[-0.02em]">{step.title}</h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-graphite">{step.body}</p>
               </Reveal>
             ))}
@@ -144,18 +145,18 @@ export default function Bexo() {
       <section className="bg-black px-5 py-24 text-white md:py-32">
         <div className="mx-auto max-w-5xl">
           <Reveal className="text-center">
-            <p className="text-lg font-semibold text-white/70">Proven in the lab</p>
-            <div className="mt-4 text-7xl font-semibold tracking-[-0.04em] text-brand md:text-9xl">Up to 38%</div>
+            <Eyebrow>Proven in the lab</Eyebrow>
+            <div className="mt-4 text-7xl font-medium tracking-[-0.04em] text-brand md:text-9xl">Up to 38%</div>
             <p className="mx-auto mt-5 max-w-lg text-lg leading-relaxed text-white/70">
               reduction in lower-back muscle activation during symmetric lifting with active assistance.
               <Ref n={1} />
             </p>
           </Reveal>
 
-          <div className="mt-20 grid gap-px overflow-hidden rounded-3xl bg-white/15 md:grid-cols-3">
+          <div className="mt-20 grid gap-px overflow-hidden rounded-4xl bg-white/15 md:grid-cols-3">
             {RESULTS.map((result, i) => (
               <Reveal key={result.value} delay={i * 80} className="bg-black p-8 md:p-10">
-                <div className="text-5xl font-semibold tracking-[-0.04em]">{result.value}</div>
+                <div className="text-5xl font-medium tracking-[-0.04em]">{result.value}</div>
                 <p className="mt-3 text-[15px] leading-relaxed text-white/70">
                   {result.label}
                   <Ref n={result.source} />
@@ -168,10 +169,10 @@ export default function Bexo() {
             Participants rated the hybrid configuration the most helpful and most comfortable of all conditions tested.
           </Reveal>
 
-          <div className="mt-20 grid gap-px overflow-hidden rounded-3xl bg-white/15 sm:grid-cols-2">
+          <div className="mt-20 grid gap-px overflow-hidden rounded-4xl bg-white/15 sm:grid-cols-2">
             {FEATURES.map((feature, i) => (
               <Reveal key={feature.title} delay={i * 80} className="bg-black p-8 md:p-12">
-                <h3 className="text-xl font-semibold tracking-tight md:text-2xl">{feature.title}</h3>
+                <h3 className="text-xl font-medium tracking-[-0.02em] md:text-2xl">{feature.title}</h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-white/70 md:text-base">{feature.body}</p>
               </Reveal>
             ))}
