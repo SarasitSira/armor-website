@@ -1,31 +1,36 @@
 import { Link } from 'react-router-dom';
 
 import { ArmorLogo, Wordmark } from './Brand';
+import LanguageSwitcher from './LanguageSwitcher';
+import { useLocalizePath, useT } from '../i18n';
 import { useSourcesList } from '../sources';
 import { CONTACT_HREF, DEMO_HREF, INSTAGRAM_HREF, LINKEDIN_HREF, MAILING_LIST_HREF } from '../site';
 
 const linkClass = 'text-[11px] font-medium uppercase tracking-[0.14em] text-graphite transition-colors hover:text-black';
 
+// Labels are looked up in the current language: `nav` keys for pages, `footer` keys for the rest
 const COLUMNS = [
   [
-    { label: 'Industries', to: '/industries' },
-    { label: 'Solutions', to: '/solutions' },
-    { label: 'Bexo', to: '/solutions/bexo' },
-    { label: 'Shield', to: '/solutions/shield' },
-    { label: 'Contact', to: '/contact' },
+    { nav: 'industries', to: '/industries' },
+    { nav: 'solutions', to: '/solutions' },
+    { footer: 'bexo', to: '/solutions/bexo' },
+    { footer: 'shield', to: '/solutions/shield' },
+    { nav: 'contact', to: '/contact' },
   ],
   [
-    { label: 'LinkedIn', href: LINKEDIN_HREF, external: true },
-    { label: 'Instagram', href: INSTAGRAM_HREF, external: true },
+    { footer: 'linkedin', href: LINKEDIN_HREF, external: true },
+    { footer: 'instagram', href: INSTAGRAM_HREF, external: true },
   ],
   [
-    { label: 'Book a demo', href: DEMO_HREF, external: true },
-    { label: 'Get updates', href: MAILING_LIST_HREF, external: true },
-    { label: 'Support', href: CONTACT_HREF },
+    { footer: 'bookDemo', href: DEMO_HREF, external: true },
+    { footer: 'getUpdates', href: MAILING_LIST_HREF, external: true },
+    { footer: 'support', href: CONTACT_HREF },
   ],
 ];
 
 export default function Footer() {
+  const t = useT();
+  const localize = useLocalizePath();
   const sources = useSourcesList();
 
   return (
@@ -33,7 +38,7 @@ export default function Footer() {
       {/* Research citations for the current page, kept as quiet fine print */}
       {sources.length > 0 && (
         <div className="mb-12 border-b border-black/10 pb-8">
-          <h2 className="text-[11px] font-semibold text-graphite">Sources</h2>
+          <h2 className="text-[11px] font-semibold text-graphite">{t.footer.sources}</h2>
           <ol className="mt-2 list-decimal space-y-1 pl-4 text-[11px] leading-relaxed text-graphite/70">
             {sources.map((source) => (
               <li key={source}>{source}</li>
@@ -43,7 +48,7 @@ export default function Footer() {
       )}
 
       <div className="flex flex-col gap-12 md:flex-row md:justify-between">
-        <Link to="/" className="flex items-center gap-2 self-start" aria-label="ARMOR home">
+        <Link to={localize('/')} className="flex items-center gap-2 self-start" aria-label={t.common.homeAria}>
           <ArmorLogo className="h-6 w-6" />
           <Wordmark className="text-[14px] text-black" />
         </Link>
@@ -51,29 +56,35 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-x-16 gap-y-10 sm:grid-cols-3 md:gap-x-24">
           {COLUMNS.map((column, i) => (
             <ul key={i} className="space-y-4">
-              {column.map((item) => (
-                <li key={item.label}>
-                  {item.to ? (
-                    <Link to={item.to} className={linkClass}>{item.label}</Link>
-                  ) : (
-                    <a
-                      href={item.href}
-                      className={linkClass}
-                      {...(item.external && { target: '_blank', rel: 'noopener noreferrer' })}
-                    >
-                      {item.label}
-                    </a>
-                  )}
-                </li>
-              ))}
+              {column.map((item) => {
+                const label = item.nav ? t.nav[item.nav] : t.footer[item.footer];
+                return (
+                  <li key={item.to ?? item.href}>
+                    {item.to ? (
+                      <Link to={localize(item.to)} className={linkClass}>{label}</Link>
+                    ) : (
+                      <a
+                        href={item.href}
+                        className={linkClass}
+                        {...(item.external && { target: '_blank', rel: 'noopener noreferrer' })}
+                      >
+                        {label}
+                      </a>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           ))}
         </div>
       </div>
 
-      <p className="mt-16 text-[11px] font-medium uppercase tracking-[0.14em] text-graphite">
-        ARMOR © {new Date().getFullYear()}
-      </p>
+      <div className="mt-16 flex flex-wrap items-center justify-between gap-6">
+        <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-graphite">
+          ARMOR © {new Date().getFullYear()}
+        </p>
+        <LanguageSwitcher />
+      </div>
     </footer>
   );
 }

@@ -7,7 +7,8 @@
   /* Page background: #5a5a5a at 5% over white */
   --color-canvas: #f7f7f7;
 
-  --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* Geist for Latin text; Noto Sans Thai covers Thai characters, which Geist doesn't include */
+  --font-sans: "Geist", "Noto Sans Thai", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-wordmark: "Orbitron", var(--font-sans);
 }
 
@@ -16,6 +17,18 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Thai: vowel and tone marks sit above and below the line, and the script has no letter case,
+   so give headings room and drop the tight or wide letter-spacing used for Latin text */
+:lang(th) h1,
+:lang(th) h2,
+:lang(th) h3 {
+  line-height: 1.35;
+}
+
+:lang(th) *:not(.font-wordmark) {
+  letter-spacing: 0;
 }
 
 /* Scroll-in animation used by <Reveal> */

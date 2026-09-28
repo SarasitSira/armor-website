@@ -13,10 +13,12 @@ const app = (
   </StrictMode>
 )
 
-// Production pages are pre-rendered to HTML (scripts/prerender.mjs), so attach to that markup;
-// the dev server serves an empty root, so render from scratch there.
-if (container.hasChildNodes()) {
+// Production pages are pre-rendered to HTML (scripts/prerender.mjs), so attach to that markup.
+// The dev server serves an empty root, and the shared 404 page is rendered in English, so both
+// render from scratch (the 404 then shows in the language of the requested URL).
+if (container.hasChildNodes() && !('notFound' in container.dataset)) {
   hydrateRoot(container, app)
 } else {
+  container.replaceChildren()
   createRoot(container).render(app)
 }

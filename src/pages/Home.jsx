@@ -11,6 +11,7 @@ import CtaSection from '../components/CtaSection';
 import Reveal from '../components/Reveal';
 import { ArrowLink, DemoButton, PillLink, PreviewButton } from '../components/Links';
 import { Eyebrow, FeatureRow, Heading, MediaPill } from '../components/ui';
+import { useT } from '../i18n';
 import { SHIELD_HREF } from '../site';
 
 const PARTNERS = [
@@ -19,20 +20,14 @@ const PARTNERS = [
   { name: 'Georgia Tech EPIC Lab', href: 'https://www.epic.gatech.edu', logo: epicLogo, className: 'h-14 md:h-16' },
 ];
 
-const STATS = [
-  { value: 'Up to 38%', label: 'Reduction in peak lower-back muscle activation' },
-  { value: '2.25 kg', label: 'Complete hybrid suit' },
-  { value: '25+', label: 'Years of combined exoskeleton research' },
-  { value: '0', label: 'Changes required to existing workflows' },
-];
-
-const SHIELD_FEATURES = [
-  { icon: Boxes, title: '3D body model', body: 'Wearable IMU sensors drive a live skeleton of every movement.' },
-  { icon: Activity, title: 'Posture scoring', body: 'NIOSH, REBA, and RULA assessments in real time.' },
-  { icon: LineChart, title: 'Real-time telemetry', body: 'Waveform history with CSV export for every session.' },
-];
+// Icons for the Shield feature row, in the same order as `home.shieldFeatures` in messages/*.js
+const SHIELD_ICONS = [Boxes, Activity, LineChart];
 
 export default function Home() {
+  const t = useT();
+  const h = t.home;
+  const shieldFeatures = h.shieldFeatures.map((feature, i) => ({ ...feature, icon: SHIELD_ICONS[i] }));
+
   return (
     <>
       {/* Hero: product renders fading into the page, headline at the bottom */}
@@ -48,18 +43,17 @@ export default function Home() {
             <Heading
               as="h1"
               size="hero"
-              title="Protect your workforce."
-              muted="Empower their performance."
+              title={h.heroTitle}
+              muted={h.heroMuted}
               className="max-w-3xl"
             />
             <div className="max-w-sm">
               <p className="text-[15px] leading-relaxed text-graphite">
-                Lightweight, wearable back exosuits that reduce lower-back muscle activation by up to
-                38%, protecting workers and improving productivity.
+                {h.heroBody}
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-6">
                 <DemoButton />
-                <ArrowLink to="/solutions/bexo">Explore Bexo</ArrowLink>
+                <ArrowLink to="/solutions/bexo">{h.exploreBexo}</ArrowLink>
               </div>
             </div>
           </div>
@@ -70,17 +64,17 @@ export default function Home() {
       <section className="relative h-svh min-h-150 overflow-hidden bg-black text-white">
         <img
           src={bexoImage}
-          alt="Worker wearing the Bexo back exosuit in a warehouse"
+          alt={h.photoAlt}
           className="absolute inset-0 h-full w-full object-cover object-[center_40%]"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
-        <MediaPill className="absolute left-5 top-24 md:left-8">Bexo V3</MediaPill>
+        <MediaPill className="absolute left-5 top-24 md:left-8">{h.photoPill}</MediaPill>
         <Reveal className="absolute inset-x-0 bottom-0 px-5 pb-10 md:px-8 md:pb-14">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <Heading title="Bexo" muted="Wearable back exosuit" size="hero" dark />
+            <Heading title={h.photoTitle} muted={h.photoMuted} size="hero" dark />
             <div className="flex flex-wrap items-center gap-4">
-              <PillLink to="/solutions/bexo" tone="light">Explore Bexo</PillLink>
+              <PillLink to="/solutions/bexo" tone="light">{h.exploreBexo}</PillLink>
               <DemoButton tone="light" className="bg-white/15 text-white backdrop-blur-md hover:bg-white/25" />
             </div>
           </div>
@@ -90,7 +84,7 @@ export default function Home() {
       {/* Stats */}
       <section className="px-5 py-24 md:px-8 md:py-32">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-y-14 md:grid-cols-4">
-          {STATS.map((stat, i) => (
+          {h.stats.map((stat, i) => (
             <Reveal key={stat.label} delay={i * 80} className="px-4 text-center">
               <div className="text-4xl font-medium tracking-[-0.035em] md:text-5xl">{stat.value}</div>
               <p className="mx-auto mt-3 max-w-44 text-sm leading-snug text-graphite">{stat.label}</p>
@@ -102,7 +96,7 @@ export default function Home() {
       {/* Backed by */}
       <section className="px-5 pb-24 md:px-8 md:pb-32">
         <Reveal className="mx-auto max-w-6xl border-t border-black/10 pt-16 text-center">
-          <h2 className="text-2xl font-medium tracking-[-0.03em] md:text-3xl">Backed by</h2>
+          <h2 className="text-2xl font-medium tracking-[-0.03em] md:text-3xl">{h.backedBy}</h2>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-x-16 gap-y-10 md:gap-x-24">
             {PARTNERS.map((partner) => (
               <a
@@ -122,11 +116,10 @@ export default function Home() {
       {/* Shield */}
       <section className="px-5 md:px-8">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <Eyebrow>Shield</Eyebrow>
-          <Heading title="See every lift." size="section" className="mt-4" />
+          <Eyebrow>{h.shieldEyebrow}</Eyebrow>
+          <Heading title={h.shieldTitle} size="section" className="mt-4" />
           <p className="mx-auto mt-5 max-w-xl text-[17px] leading-relaxed text-graphite">
-            Shield Ergonomics Studio turns wearable sensors into live posture scores, so risk is
-            measured instead of guessed.
+            {h.shieldBody}
           </p>
         </Reveal>
 
@@ -134,22 +127,22 @@ export default function Home() {
           <div className="relative overflow-hidden rounded-4xl bg-white p-3 md:rounded-[40px] md:p-5">
             <img
               src={shieldDashboard}
-              alt="Shield Ergonomics Studio dashboard with a 3D body model and posture scores"
+              alt={h.shieldAlt}
               className="w-full rounded-[22px] md:rounded-[28px]"
               loading="lazy"
             />
             <div className="absolute inset-x-0 bottom-8 flex justify-center md:bottom-12">
               <PreviewButton href={SHIELD_HREF} className="bg-black/70 backdrop-blur-md">
-                Preview Shield
+                {h.previewShield}
               </PreviewButton>
             </div>
           </div>
         </Reveal>
 
         <Reveal className="mx-auto mt-16 max-w-4xl">
-          <FeatureRow items={SHIELD_FEATURES} />
+          <FeatureRow items={shieldFeatures} />
           <div className="mt-12 flex justify-center">
-            <ArrowLink to="/solutions/shield">Explore Shield</ArrowLink>
+            <ArrowLink to="/solutions/shield">{h.exploreShield}</ArrowLink>
           </div>
         </Reveal>
       </section>
